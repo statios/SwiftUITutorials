@@ -76,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF458AD9254078CC00F5E2B9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AF63F0E0254013340026EAC1 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		AF63F0D0254013310026EAC1 = {
 			isa = PBXGroup;
 			children = (
@@ -103,7 +111,7 @@
 				AF63F0DE254013310026EAC1 /* ContentView.swift */,
 				AF63F112254017A50026EAC1 /* CircleImage.swift */,
 				AF63F1172540192B0026EAC1 /* MapView.swift */,
-				AF63F0E0254013340026EAC1 /* Assets.xcassets */,
+				AF458AD9254078CC00F5E2B9 /* Resources */,
 				AF63F0E5254013340026EAC1 /* Info.plist */,
 				AF63F0E2254013340026EAC1 /* Preview Content */,
 			);
