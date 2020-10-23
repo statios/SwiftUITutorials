@@ -1,31 +1,36 @@
 /*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-A view showing a list of landmarks.
-*/
+ See LICENSE folder for this sample’s licensing information.
+ 
+ Abstract:
+ A view showing a list of landmarks.
+ */
 
 import SwiftUI
 
 struct LandmarkList: View {
-    var body: some View {
-        NavigationView {
-            List(landmarkData) { landmark in
-                NavigationLink(destination: LandmarkDetail(landmark: landmark)) {
-                    LandmarkRow(landmark: landmark)
-                }
-            }
-            .navigationBarTitle(Text("Landmarks"))
+  @EnvironmentObject var userData: UserData
+  
+  var body: some View {
+    NavigationView {
+      List {
+        Toggle(isOn: $userData.showFavoritesOnly,
+               label: { Text("Favorites only") })
+        ForEach(userData.landmarks) { landmark in
+          if !self.userData.showFavoritesOnly || landmark.isFavorite {
+            NavigationLink(
+              destination: LandmarkDetail(landmark: landmark),
+              label: { LandmarkRow(landmark: landmark) })
+          }
         }
+      }
+      .navigationBarTitle(Text("Landmarks"))
     }
+  }
 }
 
 struct LandmarkList_Previews: PreviewProvider {
-    static var previews: some View {
-        ForEach(["iPhone SE", "iPhone XS Max"], id: \.self) { deviceName in
-            LandmarkList()
-                .previewDevice(PreviewDevice(rawValue: deviceName))
-                .previewDisplayName(deviceName)
-        }
-    }
+  static var previews: some View {
+    LandmarkList()
+      .environmentObject(UserData())
+  }
 }
